@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600;700&family=Tajawal:wght@400;500;700;800&display=swap");
+
+:root {
+  --gold: #f2b84b;
+  --teal: #2dd4bf;
+  --coral: #fb7185;
+  --violet: #a78bfa;
+}
+
+body.theme-dark {
+  --bg: #0b1120;
+  --surface: #131b2e;
+  --surface2: #1a2338;
+  --border: #243050;
+  --text: #e8ecf4;
+  --textdim: #8b96ae;
+  --track: #1e2a45;
+  --shadow: 0 8px 30px -12px rgba(0, 0, 0, 0.4);
+}
+
+body.theme-light {
+  --bg: #f5f6fa;
+  --surface: #ffffff;
+  --surface2: #f1f3f9;
+  --border: #e2e6f0;
+  --text: #111827;
+  --textdim: #667085;
+  --track: #eaedf5;
+  --shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.1);
+}
+
+html[dir="rtl"] body {
+  font-family: "Tajawal", "Inter", sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", "Tajawal", sans-serif;
+  min-height: 100vh;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 8px;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow, 0 8px 30px -12px rgba(0, 0, 0, 0.4));
+  animation: cardIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px -14px rgba(0, 0, 0, 0.45);
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* لمسة حركة خفيفة على كل عنصر تفاعلي (زراير، لينكات، سيلكت) — مش بطيئة ومش مبالغ فيها */
+button,
+a,
+select,
+input {
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease,
+    transform 0.15s ease;
+}
+button:active {
+  transform: scale(0.97);
+}
+
+.bar-track {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--track);
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.7s ease;
+}
